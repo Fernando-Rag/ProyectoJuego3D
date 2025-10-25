@@ -1,2 +1,63 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# ========================================
+# Unity .gitattributes
+# ========================================
+
+# Fuerza a tratar los archivos de texto como UTF-8 y normaliza los saltos de línea
+* text=auto eol=lf
+
+# Archivos de código y configuración → texto
+*.cs text diff=csharp
+*.shader text
+*.compute text
+*.cginc text
+*.hlsl text
+*.json text
+*.xml text
+*.yaml text
+*.yml text
+*.txt text
+*.md text
+*.asmdef text
+*.asmref text
+*.gradle text
+*.plist text
+*.java text
+*.js text
+*.ts text
+*.html text
+*.css text
+
+# Archivos de Unity que deben tratarse como texto (para evitar conflictos binarios)
+*.unity text merge=unityyamlmerge eol=lf
+*.prefab text merge=unityyamlmerge eol=lf
+*.asset text merge=unityyamlmerge eol=lf
+*.meta text merge=unityyamlmerge eol=lf
+*.mat text merge=unityyamlmerge eol=lf
+*.anim text merge=unityyamlmerge eol=lf
+*.controller text merge=unityyamlmerge eol=lf
+
+# Archivos binarios → sin diffs
+*.dll binary
+*.exe binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tga binary
+*.psd binary
+*.mp3 binary
+*.ogg binary
+*.wav binary
+*.fbx binary
+*.obj binary
+*.prefab.unity binary
+*.unitypackage binary
+*.a binary
+*.lib binary
+*.zip binary
+
+# Ignorar diferencias en metadatos de Unity (opcional)
+*.meta merge=unityyamlmerge diff
+
+# Evita problemas de permisos en Windows/Linux
+*.sh text eol=lf
+*.bat text eol=crlf
