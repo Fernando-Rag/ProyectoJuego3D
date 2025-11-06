@@ -2,15 +2,43 @@ using UnityEngine;
 
 public class Camara : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float Sensibilidad = 100f;
+    public Transform Player;
+
+    public float RotacionHorizontal = 0f;
+    public float RotacionVertical = 0f;
+
     void Start()
     {
-        
+
+
+
+
+
+
     }
 
-    // Update is called once per frame
+   
+
+
+
+
+
     void Update()
     {
-        
+        float ValorX = Input.GetAxis("Mouse X") * Sensibilidad * Time.deltaTime;
+        float ValorY = Input.GetAxis("Mouse Y") * Sensibilidad * Time.deltaTime;
+
+        RotacionHorizontal += ValorX;
+        RotacionVertical -= ValorY;
+
+        RotacionVertical = Mathf.Clamp(RotacionVertical, -80f, 80f);
+
+        transform.localRotation = Quaternion.Euler(RotacionVertical,0f,0f);
+
+        Player.Rotate(Vector3.up * ValorX);
+
+
+
     }
 }
