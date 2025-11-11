@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+// Movimientos de camara con el mouse
 public class Camara : MonoBehaviour
 {
     public float Sensibilidad = 100f;
