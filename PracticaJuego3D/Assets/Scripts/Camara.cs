@@ -11,17 +11,9 @@ public class Camara : MonoBehaviour
     void Start()
     {
 
-
-
-
-
-
     }
 
    
-
-
-
 
 
     void Update()
