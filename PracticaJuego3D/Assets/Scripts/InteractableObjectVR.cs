@@ -7,12 +7,12 @@ public class InteractableObjectVR : MonoBehaviour
     public string mensajeInformacion = "Información del objeto";
     
     [Header("UI 3D")]
-    public GameObject panelInfoPrefab; // El prefab del panel 3D
+    public GameObject panelInfoPrefab;
     private GameObject panelInfoInstancia;
     private bool panelActivo = false;
     
     [Header("Posición del Panel")]
-    public Vector3 offsetPosicion = new Vector3(0, 1.5f, 0); // Arriba del objeto
+    public Vector3 offsetPosicion = new Vector3(0, 1.5f, 1.5f);
     public bool mirarHaciaJugador = true;
     
     [Header("Visual Feedback")]
@@ -43,9 +43,8 @@ public class InteractableObjectVR : MonoBehaviour
         // Si el panel está activo y debe mirar al jugador
         if (panelActivo && panelInfoInstancia != null && mirarHaciaJugador && jugador != null)
         {
-            // Hacer que el panel siempre mire al jugador
             Vector3 direccion = jugador.position - panelInfoInstancia.transform.position;
-            direccion.y = 0; // Mantener el panel vertical
+            direccion.y = 0;
             if (direccion != Vector3.zero)
             {
                 panelInfoInstancia.transform.rotation = Quaternion.LookRotation(direccion);
@@ -87,8 +86,24 @@ public class InteractableObjectVR : MonoBehaviour
     {
         if (panelInfoPrefab != null)
         {
-            // Crear el panel en el mundo
-            Vector3 posicion = transform.position + offsetPosicion;
+            // Calcular posición
+            Vector3 posicion;
+            
+            if (jugador != null)
+            {
+                // Calcular dirección hacia el jugador
+                Vector3 direccionHaciaJugador = (jugador.position - transform.position).normalized;
+                
+                // Colocar el panel adelante del objeto, hacia el jugador
+                posicion = transform.position + (direccionHaciaJugador * 0.5f) + offsetPosicion;
+            }
+            else
+            {
+                // Si no hay jugador, usar offset normal
+                posicion = transform.position + offsetPosicion;
+            }
+            
+            // Crear el panel
             panelInfoInstancia = Instantiate(panelInfoPrefab, posicion, Quaternion.identity);
             
             // Configurar el texto del panel
@@ -112,6 +127,10 @@ public class InteractableObjectVR : MonoBehaviour
             panelActivo = true;
             Debug.Log("Panel mostrado: " + gameObject.name);
         }
+        else
+        {
+            Debug.LogError("Panel Info Prefab no está asignado en " + gameObject.name);
+        }
     }
 
     void OcultarPanel()
@@ -127,7 +146,6 @@ public class InteractableObjectVR : MonoBehaviour
 
     void OnDestroy()
     {
-        // Limpiar el panel si el objeto se destruye
         if (panelInfoInstancia != null)
         {
             Destroy(panelInfoInstancia);

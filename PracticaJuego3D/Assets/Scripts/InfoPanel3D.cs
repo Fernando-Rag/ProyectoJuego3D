@@ -4,7 +4,7 @@ using TMPro;
 public class InfoPanel3D : MonoBehaviour
 {
     [Header("Referencias")]
-    public TextMeshPro textoMensaje; // TextMeshPro 3D (no UI)
+    public TextMeshPro textoMensaje;
     
     [Header("Animación (Opcional)")]
     public bool animarEntrada = true;
@@ -37,6 +37,10 @@ public class InfoPanel3D : MonoBehaviour
         if (textoMensaje != null)
         {
             textoMensaje.text = texto;
+        }
+        else
+        {
+            Debug.LogWarning("textoMensaje no está asignado en InfoPanel3D");
         }
     }
 }
