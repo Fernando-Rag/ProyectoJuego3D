@@ -14,6 +14,7 @@ public class InteractableObjectVR : MonoBehaviour
     [Header("Posición del Panel")]
     public Vector3 offsetPosicion = new Vector3(0, 1.5f, 1.5f);
     public bool mirarHaciaJugador = true;
+    public Vector3 rotacionPanel = Vector3.zero;  // ← NUEVO: Rotación personalizada del panel
     
     [Header("Visual Feedback")]
     public Color colorHighlight = Color.yellow;
@@ -123,6 +124,9 @@ public class InteractableObjectVR : MonoBehaviour
                     panelInfoInstancia.transform.rotation = Quaternion.LookRotation(direccion);
                 }
             }
+            
+            // ← NUEVO: Aplicar rotación personalizada
+            panelInfoInstancia.transform.Rotate(rotacionPanel);
             
             panelActivo = true;
             Debug.Log("Panel mostrado: " + gameObject.name);

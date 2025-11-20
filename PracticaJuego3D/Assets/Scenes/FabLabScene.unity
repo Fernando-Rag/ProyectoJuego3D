@@ -6432,8 +6432,9 @@ MonoBehaviour:
     que realicen la atividad que deseen, en especial para usar las impresoras 3D
     y programar.
   panelInfoPrefab: {fileID: 296765925220434032, guid: 60e79edf26b974144aa5f3332eb22515, type: 3}
-  offsetPosicion: {x: 0, y: 1.5, z: 1.5}
+  offsetPosicion: {x: 0, y: 2, z: 2}
   mirarHaciaJugador: 1
+  rotacionPanel: {x: 0, y: 180, z: 0}
   colorHighlight: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!65 &1594713701
 BoxCollider:
@@ -6454,8 +6455,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6221228, y: 0.49578655, z: 0.17842083}
-  m_Center: {x: 0.078089215, y: 0.17067161, z: 0.0029680217}
+  m_Size: {x: 0.66583747, y: 0.49578655, z: 0.17842083}
+  m_Center: {x: 0.0999466, y: 0.17067161, z: 0.0029680217}
 --- !u!1001 &1611764147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6578,6 +6579,7 @@ MonoBehaviour:
   panelInfoPrefab: {fileID: 296765925220434032, guid: 60e79edf26b974144aa5f3332eb22515, type: 3}
   offsetPosicion: {x: -1, y: 2, z: -2}
   mirarHaciaJugador: 1
+  rotacionPanel: {x: 0, y: 0, z: 0}
   colorHighlight: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &1617194507
 PrefabInstance:
